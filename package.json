@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/camorena/restaurant/issues"
   },
-  "homepage": "https://github.com/camorena/restaurant#readme"
+  "homepage": "https://github.com/camorena/restaurant#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.17.1"
+  }
 }

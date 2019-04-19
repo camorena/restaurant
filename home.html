@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Hot Restaurant</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="/public/app.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div>
+      <header class="jumbotron jumbotron-fluid">
+        <h1><i class="fa fa-fire"></i> Welcome to Hot Restaurant</h1>
+        <h2>We only have 5 tables! Book your seat before they all are gone!</h2>
+
+        <div class="buttons">
+          <a href="/tables" class="btn btn-primary">
+            <i class="fa fa-table" aria-hidden="true"></i> View Tables</a
+          >
+          <a href="/reserve" class="btn btn-danger">
+            <i class="fa fa-list" aria-hidden="true"></i> Make Reservation</a
+          >
+        </div>
+      </header>
+    </div>
+    <footer>
+      <a href="/api/tables">
+        <br />
+        API Table Link |
+      </a>
+      <a href="/api/waitlist">API Wait List</a>
+    </footer>
+  </body>
+</html>

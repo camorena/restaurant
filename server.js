@@ -2,6 +2,7 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
+var db = require("./database.js");
 
 // Sets up the Express App
 // =============================================================
@@ -23,12 +24,12 @@ app.get("/", function(req, res) {
 
 app.get("/reserve", function(req, res) {
   // res.send("Welcome to the Star Wars Page!")
-  res.sendFile(path.join(__dirname, "make.html"));
+  res.sendFile(path.join(__dirname, "reservation.html"));
 });
 
 app.get("/tables", function(req, res) {
   // res.send("Welcome to the Star Wars Page!")
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "table.html"));
 });
 
 // clear all tables
@@ -38,27 +39,30 @@ app.delete("/api/tables#", function(req, res) {
 
 // List all tables
 app.get("/api/tables", function(req, res) {
-  return res.json(tables);
+  db.getTables(function(data) {
+    return res.json(data);
+  });
 });
 
 // Displays a single table, or returns false
 app.get("/api/waitlist", function(req, res) {
-  return res.json(tables);
+  db.getWaitlist(function(data) {
+    return res.json(data);
+  });
+});
+
+app.post("/tables", function(req, res) {
+  db.addReservation(req.body, function(data) {
+    return res.json(data);
+  });
 });
 
 // Create New tables - takes in JSON input
-app.post("/api/tables", function(req, res) {
+app.post("/tables", function(req, res) {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   var newtable = req.body;
-
-  console.log(newtable);
-
-  // We then add the json the user sent to the table array
-  tables.push(newtable);
-
-  // We then display the JSON to the users
-  //res.json(newtable);
+  res.json(newtable);
 });
 
 // Starts the server to begin listening
